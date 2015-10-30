@@ -3,6 +3,7 @@
 return array(
     'service_manager' => array(
         'abstract_factories' => array(
+            'Denner\Client\Factory\Client\ClientFactory',
         ),
         'aliases' => array(
         ),

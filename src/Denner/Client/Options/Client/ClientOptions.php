@@ -1,6 +1,6 @@
 <?php
 
-namespace Denner\Client\WebModule\Options\Client;
+namespace Denner\Client\Options\Client;
 
 use Detail\Core\Options\AbstractOptions;
 
@@ -9,73 +9,84 @@ class ClientOptions extends AbstractOptions
     /**
      * @var string
      */
-    protected $name;
+    protected $baseUrl;
 
     /**
      * @var string
      */
-    protected $url;
+    protected $appId;
+
+    /**
+     * @var string
+     */
+    protected $appKey;
 
     /**
      * @var array
      */
-    protected $headers;
+    protected $defaults = array();
 
     /**
-     * {@inheritDoc}
-     * @param String $serviceName
+     * @return string
      */
-    public function __construct($serviceName, $options = null)
+    public function getBaseUrl()
     {
-        parent::__construct($options);
-        $this->setName($serviceName);
+        return $this->baseUrl;
+    }
+
+    /**
+     * @param string $baseUrl
+     */
+    public function setBaseUrl($baseUrl)
+    {
+        $this->baseUrl = $baseUrl;
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function getAppId()
     {
-        return $this->name;
+        return $this->appId;
     }
 
     /**
-     * @param string $name
+     * @param string $appId
      */
-    public function setName($name)
+    public function setAppId($appId)
     {
-        $this->name = $name;
+        $this->appId = $appId;
     }
 
     /**
      * @return string
      */
-    public function getUrl()
+    public function getAppKey()
     {
-        return $this->url;
+        return $this->appKey;
     }
 
     /**
-     * @param string $url
+     * @param string $appKey
      */
-    public function setUrl($url)
+    public function setAppKey($appKey)
     {
-        $this->url = $url;
+        $this->appKey = $appKey;
     }
 
     /**
      * @return array
      */
-    public function getHeaders()
+    public function getDefaults()
     {
-        return $this->headers;
+        return $this->defaults;
     }
 
     /**
-     * @param array $headers
+     * @param array $defaults
      */
-    public function setHeaders($headers)
+    public function setDefaults(array $defaults)
     {
-        $this->headers = $headers;
+        $this->defaults = $defaults;
     }
 }
