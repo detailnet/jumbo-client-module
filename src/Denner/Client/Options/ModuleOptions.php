@@ -17,7 +17,7 @@ class ModuleOptions extends AbstractOptions
      * @param null|string $name
      * @return ClientOptions|ClientOptions[]
      */
-    public function getServices($name = null)
+    public function getClients($name = null)
     {
         if ($name) {
             return isset($this->services[$name]) ? $this->services[$name] : null;
@@ -29,8 +29,12 @@ class ModuleOptions extends AbstractOptions
     /**
      * @param array $clients
      */
-    public function setServices(array $clients)
+    public function setClients(array $clients = array())
     {
-        $this->clients = $clients;
+        $this->clients = array();
+
+        foreach ($clients as $clientName => $options) {
+            $this->clients[$clientName] = new ClientOptions($clientName, $options);
+        }
     }
 }
