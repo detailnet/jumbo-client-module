@@ -1,6 +1,6 @@
 <?php
 
-namespace Denner\Client\WebModule\Options\Client;
+namespace Denner\Client\Options\Client;
 
 use Detail\Core\Options\AbstractOptions;
 
@@ -9,73 +9,63 @@ class ClientOptions extends AbstractOptions
     /**
      * @var string
      */
-    protected $name;
+    protected $baseUrl;
 
     /**
      * @var string
      */
-    protected $url;
+    protected $appId;
 
     /**
-     * @var array
+     * @var string
      */
-    protected $headers;
+    protected $appKey;
 
     /**
-     * {@inheritDoc}
-     * @param String $serviceName
+     * @return string
      */
-    public function __construct($serviceName, $options = null)
+    public function getBaseUrl()
     {
-        parent::__construct($options);
-        $this->setName($serviceName);
+        return $this->baseUrl;
+    }
+
+    /**
+     * @param string $baseUrl
+     */
+    public function setBaseUrl($baseUrl)
+    {
+        $this->baseUrl = $baseUrl;
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function getAppId()
     {
-        return $this->name;
+        return $this->appId;
     }
 
     /**
-     * @param string $name
+     * @param string $appId
      */
-    public function setName($name)
+    public function setAppId($appId)
     {
-        $this->name = $name;
+        $this->appId = $appId;
     }
 
     /**
      * @return string
      */
-    public function getUrl()
+    public function getAppKey()
     {
-        return $this->url;
+        return $this->appKey;
     }
 
     /**
-     * @param string $url
+     * @param string $appKey
      */
-    public function setUrl($url)
+    public function setAppKey($appKey)
     {
-        $this->url = $url;
-    }
-
-    /**
-     * @return array
-     */
-    public function getHeaders()
-    {
-        return $this->headers;
-    }
-
-    /**
-     * @param array $headers
-     */
-    public function setHeaders($headers)
-    {
-        $this->headers = $headers;
+        $this->appKey = $appKey;
     }
 }

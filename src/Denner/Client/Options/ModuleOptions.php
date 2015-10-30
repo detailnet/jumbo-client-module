@@ -4,37 +4,39 @@ namespace Denner\Client\Options;
 
 use Detail\Core\Options\AbstractOptions;
 
-use Denner\Client\WebModule\Options\Client\ClientOptions;
-
 class ModuleOptions extends AbstractOptions
 {
     /**
-     * @var ClientOptions[]
+     * @var Client\ClientOptions[]
      */
     protected $clients;
 
     /**
-     * @param null|string $name
-     * @return ClientOptions|ClientOptions[]
+     * @param string $name
+     * @return Client\ClientOptions
      */
-    public function getClients($name = null)
+    public function getClient($name)
     {
-        if ($name) {
-            return isset($this->services[$name]) ? $this->services[$name] : null;
-        }
+        return isset($this->clients[$name]) ? $this->clients[$name] : null;
+    }
 
-        return $this->services;
+    /**
+     * @return Client\ClientOptions[]
+     */
+    public function getClients()
+    {
+        return $this->clients;
     }
 
     /**
      * @param array $clients
      */
-    public function setClients(array $clients = array())
+    public function setClients(array $clients)
     {
         $this->clients = array();
 
-        foreach ($clients as $clientName => $options) {
-            $this->clients[$clientName] = new ClientOptions($clientName, $options);
+        foreach ($clients as $name => $options) {
+            $this->clients[$name] = new Client\ClientOptions($options);
         }
     }
 }

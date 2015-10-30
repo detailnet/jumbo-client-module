@@ -2,17 +2,17 @@
 
 namespace Denner\Client\Service;
 
-use Denner\Client\AssetsClient;
+use Denner\Client\AssetsClient as Client;
 
 trait AssetsClientAwareTrait
 {
     /**
-     * @var AssetsClient
+     * @var Client
      */
     protected $assetsClient;
 
     /**
-     * @return AssetsClient
+     * @return Client
      */
     public function getAssetsClient()
     {
@@ -20,9 +20,9 @@ trait AssetsClientAwareTrait
     }
 
     /**
-     * @param AssetsClient $assetsClient
+     * @param Client $assetsClient
      */
-    public function setAssetsClient(AssetsClient $assetsClient)
+    public function setAssetsClient(Client $assetsClient)
     {
         $this->assetsClient = $assetsClient;
     }
