@@ -4,47 +4,33 @@ namespace Denner\Client\Options;
 
 use Detail\Core\Options\AbstractOptions;
 
+use Denner\Client\WebModule\Options\Client\ClientOptions;
+
 class ModuleOptions extends AbstractOptions
 {
     /**
-     * @var array
+     * @var ClientOptions[]
      */
-    protected $navigationItems = array();
+    protected $clients;
 
     /**
-     * @var array
+     * @param null|string $name
+     * @return ClientOptions|ClientOptions[]
      */
-    protected $listeners = array();
-
-    /**
-     * @return array
-     */
-    public function getNavigationItems()
+    public function getServices($name = null)
     {
-        return $this->navigationItems;
+        if ($name) {
+            return isset($this->services[$name]) ? $this->services[$name] : null;
+        }
+
+        return $this->services;
     }
 
     /**
-     * @param array $navigationItems
+     * @param array $clients
      */
-    public function setNavigationItems(array $navigationItems)
+    public function setServices(array $clients)
     {
-        $this->navigationItems = $navigationItems;
-    }
-
-    /**
-     * @return array
-     */
-    public function getListeners()
-    {
-        return $this->listeners;
-    }
-
-    /**
-     * @param array $listeners
-     */
-    public function setListeners(array $listeners)
-    {
-        $this->listeners = $listeners;
+        $this->clients = $clients;
     }
 }

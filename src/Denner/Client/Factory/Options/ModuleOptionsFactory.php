@@ -19,10 +19,10 @@ class ModuleOptionsFactory implements
     {
         $config = $serviceLocator->get('Config');
 
-        if (!isset($config['detail_locale'])) {
-            throw new ConfigException('Config for Detail\Locale is not set');
+        if (!isset($config['denner_client'])) {
+            throw new ConfigException('Config for Denner\Client is not set');
         }
 
-        return new ModuleOptions($config['detail_locale']);
+        return new ModuleOptions($config['denner_client']);
     }
 }
