@@ -22,6 +22,11 @@ class ClientOptions extends AbstractOptions
     protected $appKey;
 
     /**
+     * @var array
+     */
+    protected $defaults = array();
+
+    /**
      * @return string
      */
     public function getBaseUrl()
@@ -67,5 +72,21 @@ class ClientOptions extends AbstractOptions
     public function setAppKey($appKey)
     {
         $this->appKey = $appKey;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDefaults()
+    {
+        return $this->defaults;
+    }
+
+    /**
+     * @param array $defaults
+     */
+    public function setDefaults(array $defaults)
+    {
+        $this->defaults = $defaults;
     }
 }
