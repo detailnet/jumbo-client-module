@@ -76,6 +76,11 @@ class ClientFactory implements
      */
     protected function clientExists($clientClass)
     {
+        // Class name must start with "Denner\Client"
+        if (strpos($clientClass, 'Denner\Client') !== 0) {
+            return false;
+        }
+
         if (!class_exists($clientClass)) {
             return false;
         }
