@@ -63,9 +63,16 @@ class ClientFactory implements
 
         /** @var DennerClient $requestedName*/
 
-        $client = $requestedName::factory(
-            $clientOptions !== null ? $clientOptions->toArray() : array()
-        );
+        $appliedClientOptions = array();
+
+        // Only pass along options which are actually set
+        if ($clientOptions !== null) {
+            $appliedClientOptions = array_filter($clientOptions->toArray(), function($value) {
+                return $value !== null;
+            });
+        }
+
+        $client = $requestedName::factory($appliedClientOptions);
 
         return $client;
     }
