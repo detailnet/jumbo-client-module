@@ -34,7 +34,6 @@ class Module implements
      */
     public function getConfig()
     {
-        /** @todo We should merge with SlmLocale's config */
         return include __DIR__ . '/../../../config/module.config.php';
     }
 

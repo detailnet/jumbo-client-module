@@ -1,9 +1,9 @@
 # Zend Framework 2 Module for denner-client
 
-[![Build Status](https://travis-ci.org/detailnet/dfw-locale-module.svg?branch=master)](https://travis-ci.org/detailnet/dfw-locale-module)
-[![Coverage Status](https://img.shields.io/coveralls/detailnet/dfw-locale-module.svg)](https://coveralls.io/r/detailnet/dfw-locale-module)
-[![Latest Stable Version](https://poser.pugx.org/detailnet/dfw-locale-module/v/stable.svg)](https://packagist.org/packages/detailnet/dfw-locale-module)
-[![Latest Unstable Version](https://poser.pugx.org/detailnet/dfw-locale-module/v/unstable.svg)](https://packagist.org/packages/detailnet/dfw-locale-module)
+[![Build Status](https://travis-ci.org/detailnet/denner-client-module.svg?branch=master)](https://travis-ci.org/detailnet/denner-client-module)
+[![Coverage Status](https://img.shields.io/coveralls/detailnet/denner-client-module.svg)](https://coveralls.io/r/detailnet/denner-client-module)
+[![Latest Stable Version](https://poser.pugx.org/detailnet/denner-client-module/v/stable.svg)](https://packagist.org/packages/detailnet/denner-client-module)
+[![Latest Unstable Version](https://poser.pugx.org/detailnet/denner-client-module/v/unstable.svg)](https://packagist.org/packages/detailnet/denner-client-module)
 
 ## Introduction
 This module contains tools to use the [denner-client](https://github.com/detailnet/denner-client).
@@ -38,7 +38,7 @@ Install the module through [Composer](http://getcomposer.org/) using the followi
      'Denner\Client',
      ```
 
-  7. Copy `vendor/detailnet/dfw-locale-module/config/denner_client.local.php.dist` into your application's
+  7. Copy `vendor/detailnet/denner-client-module/config/denner_client.local.php.dist` into your application's
      `config/autoload` directory, rename it to `denner_client.local.php` and make the appropriate changes.
 
 ## Usage
