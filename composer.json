@@ -14,6 +14,14 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Ivan Wolf",
+            "email": "ivan.wolf@detailnet.ch"
+        },
+        {
+            "name": "Curzio Della Santa",
+            "email": "curzio.della.santa@detailnet.ch"
+        },
+        {
             "name": "Kevin Jüni",
             "email": "kevin.jueni@detailnet.ch"
         }
@@ -24,13 +32,13 @@
         "zendframework/zend-modulemanager": "2.*",
         "zendframework/zend-servicemanager": "2.*",
         "detailnet/dfw-core": "~0.2",
-        "detailnet/denner-client": "~0.2.0"
+        "detailnet/denner-client": "~0.3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.4.5",
-        "squizlabs/php_codesniffer" : "~2.2.0",
-        "phpmd/phpmd": "~2.1.3",
-        "satooshi/php-coveralls": "dev-master"
+        "phpunit/phpunit": "~4.6",
+        "squizlabs/php_codesniffer" : "~2.2",
+        "phpmd/phpmd": "~2.2",
+        "satooshi/php-coveralls": "~1.0"
     },
     "suggest": {
     },
