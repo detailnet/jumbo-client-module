@@ -67,7 +67,7 @@ class ClientFactory implements
 
         // Only pass along options which are actually set
         if ($clientOptions !== null) {
-            $appliedClientOptions = array_filter($clientOptions->toArray(), function($value) {
+            $appliedClientOptions = array_filter($clientOptions->toArray(), function ($value) {
                 return $value !== null;
             });
         }
