@@ -10,8 +10,8 @@
     backupGlobals="false"
     syntaxCheck="true"
 >
-    <testsuite name="Denner\Client Test Suite">
-        <directory>./tests/DennerTest/Client</directory>
+    <testsuite name="Jumbo\Client Test Suite">
+        <directory>./tests/JumboTest/Client</directory>
     </testsuite>
 
     <filter>

@@ -1,10 +1,12 @@
 <?php
 
-namespace DennerTest\Client;
+namespace JumboTest\Client;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
-use Denner\Client\Module;
+use Zend\Loader\StandardAutoloader;
+
+use Jumbo\Client\Module;
 
 class ModuleTest extends TestCase
 {
@@ -24,9 +26,11 @@ class ModuleTest extends TestCase
 
         $this->assertTrue(is_array($config));
 
-        $this->assertArrayHasKey('Zend\Loader\StandardAutoloader', $config);
-        $this->assertArrayHasKey('namespaces', $config['Zend\Loader\StandardAutoloader']);
-        $this->assertArrayHasKey('Denner\Client', $config['Zend\Loader\StandardAutoloader']['namespaces']);
+        $autoloaderClass = StandardAutoloader::CLASS;
+
+        $this->assertArrayHasKey($autoloaderClass, $config);
+        $this->assertArrayHasKey('namespaces', $config[$autoloaderClass]);
+        $this->assertArrayHasKey('Jumbo\Client', $config[$autoloaderClass]['namespaces']);
     }
 
     public function testModuleProvidesConfig()
@@ -34,8 +38,8 @@ class ModuleTest extends TestCase
         $config = $this->module->getConfig();
 
         $this->assertTrue(is_array($config));
-        $this->assertArrayHasKey('denner_client', $config);
-        $this->assertTrue(is_array($config['denner_client']));
+        $this->assertArrayHasKey('jumbo_client', $config);
+        $this->assertTrue(is_array($config['jumbo_client']));
     }
 
     public function testModuleProvidesControllerConfig()

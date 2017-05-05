@@ -1,6 +1,6 @@
 <?php
 
-namespace Denner\Client\Options\Client;
+namespace Jumbo\Client\Options\Client;
 
 use Detail\Core\Options\AbstractOptions;
 

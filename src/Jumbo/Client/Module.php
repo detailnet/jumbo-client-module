@@ -1,6 +1,6 @@
 <?php
 
-namespace Denner\Client;
+namespace Jumbo\Client;
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;

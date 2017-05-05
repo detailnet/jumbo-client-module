@@ -1,6 +1,6 @@
 <?php
 
-namespace Denner\Client\Options;
+namespace Jumbo\Client\Options;
 
 use Detail\Core\Options\AbstractOptions;
 
@@ -9,7 +9,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * @var Client\ClientOptions[]
      */
-    protected $clients;
+    protected $clients = array();
 
     /**
      * @param string $name

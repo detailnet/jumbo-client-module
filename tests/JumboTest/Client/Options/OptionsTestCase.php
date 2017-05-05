@@ -1,8 +1,8 @@
 <?php
 
-namespace DennerTest\Client\Options;
+namespace JumboTest\Client\Options;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 abstract class OptionsTestCase extends TestCase
 {
@@ -15,7 +15,7 @@ abstract class OptionsTestCase extends TestCase
     {
         $mockedMethods = array_diff($this->getMethods($class), $methods);
 
-        return $this->getMock($class, $mockedMethods);
+        return $this->getMockBuilder($class)->setMethods($mockedMethods)->getMock();
     }
 
     /**

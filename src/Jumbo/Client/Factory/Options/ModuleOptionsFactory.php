@@ -1,12 +1,12 @@
 <?php
 
-namespace Denner\Client\Factory\Options;
+namespace Jumbo\Client\Factory\Options;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-use Denner\Client\Exception\ConfigException;
-use Denner\Client\Options\ModuleOptions;
+use Jumbo\Client\Exception\ConfigException;
+use Jumbo\Client\Options\ModuleOptions;
 
 class ModuleOptionsFactory implements
     FactoryInterface
@@ -19,10 +19,10 @@ class ModuleOptionsFactory implements
     {
         $config = $serviceLocator->get('Config');
 
-        if (!isset($config['denner_client'])) {
-            throw new ConfigException('Config for Denner\Client is not set');
+        if (!isset($config['jumbo_client'])) {
+            throw new ConfigException('Config for Jumbo\Client is not set');
         }
 
-        return new ModuleOptions($config['denner_client']);
+        return new ModuleOptions($config['jumbo_client']);
     }
 }

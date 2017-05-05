@@ -1,12 +1,12 @@
-# Zend Framework Module for denner-client
+# Zend Framework Module for jumbo-client
 
-[![Build Status](https://travis-ci.org/detailnet/denner-client-module.svg?branch=master)](https://travis-ci.org/detailnet/denner-client-module)
-[![Coverage Status](https://img.shields.io/coveralls/detailnet/denner-client-module.svg)](https://coveralls.io/r/detailnet/denner-client-module)
-[![Latest Stable Version](https://poser.pugx.org/detailnet/denner-client-module/v/stable.svg)](https://packagist.org/packages/detailnet/denner-client-module)
-[![Latest Unstable Version](https://poser.pugx.org/detailnet/denner-client-module/v/unstable.svg)](https://packagist.org/packages/detailnet/denner-client-module)
+[![Build Status](https://travis-ci.org/detailnet/jumbo-client-module.svg?branch=master)](https://travis-ci.org/detailnet/jumbo-client-module)
+[![Coverage Status](https://img.shields.io/coveralls/detailnet/jumbo-client-module.svg)](https://coveralls.io/r/detailnet/jumbo-client-module)
+[![Latest Stable Version](https://poser.pugx.org/detailnet/jumbo-client-module/v/stable.svg)](https://packagist.org/packages/detailnet/jumbo-client-module)
+[![Latest Unstable Version](https://poser.pugx.org/detailnet/jumbo-client-module/v/unstable.svg)](https://packagist.org/packages/detailnet/jumbo-client-module)
 
 ## Introduction
-This module contains tools to use the [denner-client](https://github.com/detailnet/denner-client).
+This module contains tools to use the [jumbo-client](https://github.com/detailnet/jumbo-client).
 
 ## Requirements
 [Zend Framework Skeleton Application](http://www.github.com/zendframework/ZendSkeletonApplication) (or compatible architecture)
@@ -21,7 +21,7 @@ Install the module through [Composer](http://getcomposer.org/) using the followi
      ```json
      {
          "require": {
-             "detailnet/denner-client-module": "1.x-dev"
+             "detailnet/jumbo-client-module": "1.x-dev"
          }
      }
      ```
@@ -35,11 +35,11 @@ Install the module through [Composer](http://getcomposer.org/) using the followi
   6. Open `configs/application.config.php` and add following key to your `modules`:
 
      ```php
-     'Denner\Client',
+     'Jumbo\Client',
      ```
 
-  7. Copy `vendor/detailnet/denner-client-module/config/denner_client.local.php.dist` into your application's
-     `config/autoload` directory, rename it to `denner_client.local.php` and make the appropriate changes.
+  7. Copy `vendor/detailnet/jumbo-client-module/config/jumbo_client.local.php.dist` into your application's
+     `config/autoload` directory, rename it to `jumbo_client.local.php` and make the appropriate changes.
 
 ## Usage
 tbd

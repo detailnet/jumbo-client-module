@@ -1,6 +1,6 @@
 <?php
 
-namespace Denner\Client\Exception;
+namespace Jumbo\Client\Exception;
 
 class ConfigException extends RuntimeException
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Denner\Client\Service;
+namespace Jumbo\Client\Service;
 
-use Denner\Client\AssetsClient as Client;
+use Jumbo\Client\AssetsClient as Client;
 
 trait AssetsClientAwareTrait
 {

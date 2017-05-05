@@ -1,16 +1,16 @@
 <?php
 
-namespace Denner\Client\Factory\Client;
+namespace Jumbo\Client\Factory\Client;
 
 use ReflectionClass;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-use Denner\Client\DennerClient;
-use Denner\Client\Exception;
-use Denner\Client\Options\Client\ClientOptions;
-use Denner\Client\Options\ModuleOptions;
+use Jumbo\Client\JumboClient;
+use Jumbo\Client\Exception;
+use Jumbo\Client\Options\Client\ClientOptions;
+use Jumbo\Client\Options\ModuleOptions;
 
 class ClientFactory implements
     AbstractFactoryInterface
@@ -49,7 +49,7 @@ class ClientFactory implements
      * @param ServiceLocatorInterface $services
      * @param string $name
      * @param string $requestedName
-     * @return DennerClient
+     * @return JumboClient
      */
     public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
     {
@@ -61,7 +61,7 @@ class ClientFactory implements
             );
         }
 
-        /** @var DennerClient $requestedName*/
+        /** @var JumboClient $requestedName*/
 
         $appliedClientOptions = array();
 
@@ -83,8 +83,8 @@ class ClientFactory implements
      */
     protected function clientExists($clientClass)
     {
-        // Class name must start with "Denner\Client"
-        if (strpos($clientClass, 'Denner\Client') !== 0) {
+        // Class name must start with "Jumbo\Client"
+        if (strpos($clientClass, 'Jumbo\Client') !== 0) {
             return false;
         }
 
@@ -94,7 +94,7 @@ class ClientFactory implements
 
         $reflectionClass = new ReflectionClass($clientClass);
 
-        return $reflectionClass->isSubclassOf(DennerClient::CLASS);
+        return $reflectionClass->isSubclassOf(JumboClient::CLASS);
     }
 
     /**
