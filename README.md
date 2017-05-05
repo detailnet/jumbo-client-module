@@ -6,7 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/detailnet/jumbo-client-module/v/unstable.svg)](https://packagist.org/packages/detailnet/jumbo-client-module)
 
 ## Introduction
-This module contains tools to use the [jumbo-client](https://github.com/detailnet/jumbo-client).
+This module integrates [jumbo-client](https://github.com/detailnet/jumbo-client) with [Zend Framework](https://github.com/zendframework/zendframework).
 
 ## Requirements
 [Zend Framework Skeleton Application](http://www.github.com/zendframework/ZendSkeletonApplication) (or compatible architecture)
