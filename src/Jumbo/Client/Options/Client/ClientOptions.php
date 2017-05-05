@@ -9,7 +9,7 @@ class ClientOptions extends AbstractOptions
     /**
      * @var string
      */
-    protected $baseUrl;
+    protected $baseUri;
 
     /**
      * @var string
@@ -22,24 +22,19 @@ class ClientOptions extends AbstractOptions
     protected $appKey;
 
     /**
-     * @var array
-     */
-    protected $defaults = array();
-
-    /**
      * @return string
      */
-    public function getBaseUrl()
+    public function getBaseUri()
     {
-        return $this->baseUrl;
+        return $this->baseUri;
     }
 
     /**
-     * @param string $baseUrl
+     * @param string $baseUri
      */
-    public function setBaseUrl($baseUrl)
+    public function setBaseUri($baseUri)
     {
-        $this->baseUrl = $baseUrl;
+        $this->baseUri = $baseUri;
     }
 
     /**
@@ -72,21 +67,5 @@ class ClientOptions extends AbstractOptions
     public function setAppKey($appKey)
     {
         $this->appKey = $appKey;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDefaults()
-    {
-        return $this->defaults;
-    }
-
-    /**
-     * @param array $defaults
-     */
-    public function setDefaults(array $defaults)
-    {
-        $this->defaults = $defaults;
     }
 }
