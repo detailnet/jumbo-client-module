@@ -1,4 +1,4 @@
-# Zend Framework 2 Module for denner-client
+# Zend Framework Module for denner-client
 
 [![Build Status](https://travis-ci.org/detailnet/denner-client-module.svg?branch=master)](https://travis-ci.org/detailnet/denner-client-module)
 [![Coverage Status](https://img.shields.io/coveralls/detailnet/denner-client-module.svg)](https://coveralls.io/r/detailnet/denner-client-module)
@@ -9,7 +9,7 @@
 This module contains tools to use the [denner-client](https://github.com/detailnet/denner-client).
 
 ## Requirements
-[Zend Framework 2 Skeleton Application](http://www.github.com/zendframework/ZendSkeletonApplication) (or compatible architecture)
+[Zend Framework Skeleton Application](http://www.github.com/zendframework/ZendSkeletonApplication) (or compatible architecture)
 
 ## Installation
 Install the module through [Composer](http://getcomposer.org/) using the following steps:
