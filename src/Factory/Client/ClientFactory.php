@@ -2,6 +2,7 @@
 
 namespace Jumbo\Client\Factory\Client;
 
+use Interop\Container\ContainerInterface;
 use Jumbo\Client\JumboClient;
 use Jumbo\Client\Exception;
 use Jumbo\Client\Options\Client\ClientOptions;
@@ -20,14 +21,7 @@ class ClientFactory implements
      */
     private $lookupCache = [];
 
-    /**
-     * Determine if we can create a service with name.
-     *
-     * @param string $name
-     * @param string $requestedName
-     * @return boolean
-     */
-    public function canCreateServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         if (array_key_exists($requestedName, $this->lookupCache)) {
             return $this->lookupCache[$requestedName];
@@ -41,15 +35,20 @@ class ClientFactory implements
     }
 
     /**
-     * Create service with name.
+     * Determine if we can create a service with name.
      *
      * @param string $name
      * @param string $requestedName
-     * @return JumboClient
+     * @return boolean
      */
-    public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
+    public function canCreateServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
     {
-        $clientOptions = $this->getClientOptions($services, $requestedName);
+        return $this->canCreate($services, $requestedName);
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): JumboClient
+    {
+        $clientOptions = $this->getClientOptions($container, $requestedName);
 
         if (!$this->clientExists($requestedName)) {
             throw new Exception\RuntimeException(
@@ -68,9 +67,19 @@ class ClientFactory implements
             });
         }
 
-        $client = $requestedName::factory($appliedClientOptions);
+        return $requestedName::factory($appliedClientOptions);
+    }
 
-        return $client;
+    /**
+     * Create service with name.
+     *
+     * @param string $name
+     * @param string $requestedName
+     * @return JumboClient
+     */
+    public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
+    {
+        return $this($services, $requestedName);
     }
 
     private function clientExists(string $clientClass): bool
@@ -89,10 +98,10 @@ class ClientFactory implements
         return $reflectionClass->isSubclassOf(JumboClient::CLASS);
     }
 
-    private function getClientOptions(ServiceLocatorInterface $services, string $clientName): ClientOptions
+    private function getClientOptions(ContainerInterface $container, string $clientName): ClientOptions
     {
         /** @var ModuleOptions $moduleOptions */
-        $moduleOptions = $services->get(ModuleOptions::CLASS);
+        $moduleOptions = $container->get(ModuleOptions::CLASS);
         $clientOptions = $moduleOptions->getClient($clientName);
 
         return $clientOptions;
