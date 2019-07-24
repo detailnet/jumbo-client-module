@@ -2,17 +2,15 @@
 
 namespace Jumbo\Client\Factory\Options;
 
+use Jumbo\Client\Exception\RuntimeException;
+use Jumbo\Client\Options\ModuleOptions;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-
-use Jumbo\Client\Exception\ConfigException;
-use Jumbo\Client\Options\ModuleOptions;
 
 class ModuleOptionsFactory implements
     FactoryInterface
 {
     /**
-     * {@inheritDoc}
      * @return ModuleOptions
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
@@ -20,7 +18,7 @@ class ModuleOptionsFactory implements
         $config = $serviceLocator->get('Config');
 
         if (!isset($config['jumbo_client'])) {
-            throw new ConfigException('Config for Jumbo\Client is not set');
+            throw new RuntimeException('Config for Jumbo\Client is not set');
         }
 
         return new ModuleOptions($config['jumbo_client']);

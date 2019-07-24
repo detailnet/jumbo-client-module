@@ -21,7 +21,7 @@ Install the module through [Composer](http://getcomposer.org/) using the followi
      ```json
      {
          "require": {
-             "detailnet/jumbo-client-module": "1.x-dev"
+             "detailnet/jumbo-client-module": "^1.0"
          }
      }
      ```
@@ -40,6 +40,3 @@ Install the module through [Composer](http://getcomposer.org/) using the followi
 
   7. Copy `vendor/detailnet/jumbo-client-module/config/jumbo_client.local.php.dist` into your application's
      `config/autoload` directory, rename it to `jumbo_client.local.php` and make the appropriate changes.
-
-## Usage
-tbd
