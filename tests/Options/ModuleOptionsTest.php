@@ -29,11 +29,15 @@ class ModuleOptionsTest extends OptionsTestCase
 
     public function testClientCanBeSet(): void
     {
+        $clientConfig = [
+            'base_uri' => 'http://some.client.com',
+            'app_id' => 'Some-App-ID',
+            'app_key' => 'Some-App-Key',
+        ];
+
         $clientName = 'SomeClient';
         $clientsConfig = [
-            $clientName => [
-                'base_uri' => 'http://some.client.com',
-            ],
+            $clientName => $clientConfig,
         ];
 
         $this->assertTrue(is_array($this->options->getClients()));
@@ -43,6 +47,12 @@ class ModuleOptionsTest extends OptionsTestCase
         $this->options->setClients($clientsConfig);
 
         $this->assertCount(1, $this->options->getClients());
-        $this->assertInstanceOf(ClientOptions::CLASS, $this->options->getClient($clientName));
+
+        $clientOptions = $this->options->getClient($clientName);
+
+        $this->assertInstanceOf(ClientOptions::CLASS, $clientOptions);
+        $this->assertEquals($clientConfig['base_uri'], $clientOptions->getBaseUri());
+        $this->assertEquals($clientConfig['app_id'], $clientOptions->getAppId());
+        $this->assertEquals($clientConfig['app_key'], $clientOptions->getAppKey());
     }
 }
