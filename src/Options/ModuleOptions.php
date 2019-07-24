@@ -7,7 +7,7 @@ use Zend\Stdlib\AbstractOptions;
 class ModuleOptions extends AbstractOptions
 {
     /** @var Client\ClientOptions[] */
-    private $clients = [];
+    protected $clients = [];
 
     public function getClient(string $name): ?Client\ClientOptions
     {

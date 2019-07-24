@@ -7,13 +7,13 @@ use Zend\Stdlib\AbstractOptions;
 class ClientOptions extends AbstractOptions
 {
     /** @var string */
-    private $baseUri;
+    protected $baseUri;
 
     /** @var string */
-    private $appId;
+    protected $appId;
 
     /** @var string */
-    private $appKey;
+    protected $appKey;
 
     public function getBaseUri(): ?string
     {

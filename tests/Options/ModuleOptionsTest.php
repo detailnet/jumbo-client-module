@@ -54,5 +54,6 @@ class ModuleOptionsTest extends OptionsTestCase
         $this->assertEquals($clientConfig['base_uri'], $clientOptions->getBaseUri());
         $this->assertEquals($clientConfig['app_id'], $clientOptions->getAppId());
         $this->assertEquals($clientConfig['app_key'], $clientOptions->getAppKey());
+        $this->assertEquals($clientConfig, $clientOptions->toArray());
     }
 }
