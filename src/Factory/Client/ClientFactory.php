@@ -2,15 +2,14 @@
 
 namespace Jumbo\Client\Factory\Client;
 
-use ReflectionClass;
-
-use Zend\ServiceManager\AbstractFactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-
+use Interop\Container\ContainerInterface;
 use Jumbo\Client\JumboClient;
 use Jumbo\Client\Exception;
 use Jumbo\Client\Options\Client\ClientOptions;
 use Jumbo\Client\Options\ModuleOptions;
+use Zend\ServiceManager\AbstractFactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use ReflectionClass;
 
 class ClientFactory implements
     AbstractFactoryInterface
@@ -20,17 +19,9 @@ class ClientFactory implements
      *
      * @var array
      */
-    protected $lookupCache = array();
+    private $lookupCache = [];
 
-    /**
-     * Determine if we can create a service with name.
-     *
-     * @param ServiceLocatorInterface $services
-     * @param string $name
-     * @param string $requestedName
-     * @return boolean
-     */
-    public function canCreateServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         if (array_key_exists($requestedName, $this->lookupCache)) {
             return $this->lookupCache[$requestedName];
@@ -44,26 +35,30 @@ class ClientFactory implements
     }
 
     /**
-     * Create service with name.
+     * Determine if we can create a service with name.
      *
-     * @param ServiceLocatorInterface $services
      * @param string $name
      * @param string $requestedName
-     * @return JumboClient
+     * @return boolean
      */
-    public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
+    public function canCreateServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
     {
-        $clientOptions = $this->getClientOptions($services, $requestedName);
+        return $this->canCreate($services, $requestedName);
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): JumboClient
+    {
+        $clientOptions = $this->getClientOptions($container, $requestedName);
 
         if (!$this->clientExists($requestedName)) {
-            throw new Exception\ConfigException(
+            throw new Exception\RuntimeException(
                 sprintf('Client "%s" does not exist', $requestedName)
             );
         }
 
         /** @var JumboClient $requestedName*/
 
-        $appliedClientOptions = array();
+        $appliedClientOptions = [];
 
         // Only pass along options which are actually set
         if ($clientOptions !== null) {
@@ -72,16 +67,22 @@ class ClientFactory implements
             });
         }
 
-        $client = $requestedName::factory($appliedClientOptions);
-
-        return $client;
+        return $requestedName::factory($appliedClientOptions);
     }
 
     /**
-     * @param string $clientClass
-     * @return boolean
+     * Create service with name.
+     *
+     * @param string $name
+     * @param string $requestedName
+     * @return JumboClient
      */
-    protected function clientExists($clientClass)
+    public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
+    {
+        return $this($services, $requestedName);
+    }
+
+    private function clientExists(string $clientClass): bool
     {
         // Class name must start with "Jumbo\Client"
         if (strpos($clientClass, 'Jumbo\Client') !== 0) {
@@ -97,15 +98,10 @@ class ClientFactory implements
         return $reflectionClass->isSubclassOf(JumboClient::CLASS);
     }
 
-    /**
-     * @param ServiceLocatorInterface $services
-     * @param string $clientName
-     * @return ClientOptions
-     */
-    protected function getClientOptions(ServiceLocatorInterface $services, $clientName)
+    private function getClientOptions(ContainerInterface $container, string $clientName): ClientOptions
     {
         /** @var ModuleOptions $moduleOptions */
-        $moduleOptions = $services->get(ModuleOptions::CLASS);
+        $moduleOptions = $container->get(ModuleOptions::CLASS);
         $clientOptions = $moduleOptions->getClient($clientName);
 
         return $clientOptions;

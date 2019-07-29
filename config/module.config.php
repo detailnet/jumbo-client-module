@@ -1,24 +1,24 @@
 <?php
 
-return array(
-    'service_manager' => array(
-        'abstract_factories' => array(
+return [
+    'service_manager' => [
+        'abstract_factories' => [
             'Jumbo\Client\Factory\Client\ClientFactory',
-        ),
-        'aliases' => array(
-        ),
-        'invokables' => array(
-        ),
-        'factories' => array(
+        ],
+        'aliases' => [
+        ],
+        'invokables' => [
+        ],
+        'factories' => [
             'Jumbo\Client\Options\ModuleOptions' => 'Jumbo\Client\Factory\Options\ModuleOptionsFactory',
-        ),
-        'initializers' => array(
-        ),
-        'shared' => array(
-        ),
-    ),
-    'jumbo_client' => array(
-        'clients' => array(
-        ),
-    ),
-);
+        ],
+        'initializers' => [
+        ],
+        'shared' => [
+        ],
+    ],
+    'jumbo_client' => [
+        'clients' => [
+        ],
+    ],
+];
