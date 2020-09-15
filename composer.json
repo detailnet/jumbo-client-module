@@ -29,7 +29,7 @@
         "zendframework/zend-mvc": "^3.0.1",
         "zendframework/zend-servicemanager": "^3.1",
         "zendframework/zend-stdlib": "^3.0.1",
-        "detailnet/jumbo-client": "^1.0"
+        "detailnet/jumbo-client": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",

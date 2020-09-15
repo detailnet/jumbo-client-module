@@ -15,6 +15,9 @@ class ClientOptions extends AbstractOptions
     /** @var string */
     protected $appKey;
 
+    /** @var array */
+    protected $httpOptions = [];
+
     public function getBaseUri(): ?string
     {
         return $this->baseUri;
@@ -59,5 +62,15 @@ class ClientOptions extends AbstractOptions
     public function setAppKey(?string $appKey): void
     {
         $this->appKey = $appKey;
+    }
+
+    public function getHttpOptions(): array
+    {
+        return $this->httpOptions;
+    }
+
+    public function setHttpOptions(array $options): void
+    {
+        $this->httpOptions = $options;
     }
 }
